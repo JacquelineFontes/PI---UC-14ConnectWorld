@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="_css/bootstrap.min.css">
+    <link rel="stylesheet" href="_css/estilo.css">
+    <script src="_JS/js.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!--Barra de Navegação-->
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Connect World</span>
+
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/cadastrarUsuario">Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Listar Clientes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--Fim Barra de Navegação-->
+        <div class="row text-center clientesCadastrados">
+            <h1>Clientes Cadastrados</h1>
+        </div>
+        <table class="table table-hover table-responsive w-auto table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome:</th>
+                    <th scope="col">Sobrenome:</th>
+                    <th scope="col">Data de Nascimento:</th>
+                    <th scope="col">CPF:</th>
+                    <th scope="col">CEP:</th>
+                    <th scope="col">Rua:</th>
+                    <th scope="col">Numero:</th>
+                    <th scope="col">Bairro:</th>
+                    <th scope="col">Cidade:</th>
+                    <th scope="col">UF:</th>
+                    <th scope="col">Email:</th>
+                    <th scope="col">Senha:</th>
+                    <th scope="col"></th>
+                    <th scope="col">Ações:</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario: ${usuarios}">
+                    <td><span th:text="${usuario.nome}"></span></a></td>
+                    <td><span th:text="${usuario.sobrenome}"></span></a></td>
+                    <td><span th:text="${usuario.dataNascimento}"></span></a></td>
+                    <td><span th:text="${usuario.cpf}"></span></a></td>
+                    <td><span th:text="${usuario.cep}"></span></a></td>
+                    <td><span th:text="${usuario.rua}"></span></a></td>
+                    <td><span th:text="${usuario.n}"></span></a></td>
+                    <td><span th:text="${usuario.bairro}"></span></a></td>
+                    <td><span th:text="${usuario.cidade}"></span></a></td>
+                    <td><span th:text="${usuario.uf}"></span></a></td>
+                    <td><span th:text="${usuario.email}"></span></td>
+                    <td><span th:text="${usuario.senha}"></span></td>
+
+                    <td><a th:href="${(#mvc.url('UC#deletarUsuario').arg(0, usuario.codigo)).build()}">
+                            <button type="button" class="btn btn-danger">Excluir</button></a></td>
+                    <td><a th:href="${(#mvc.url('UC#editarUsuario').arg(0, usuario.codigo)).build()}">
+                            <button type="button" class="btn btn-primary">Editar</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+        </main>
+        <!--Bootstrap JavaScript-->
+        <script src="_javascript/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
